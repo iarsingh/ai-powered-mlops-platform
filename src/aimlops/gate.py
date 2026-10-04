@@ -11,5 +11,7 @@ def check(body):
     if image.endswith(":latest") or image == "latest":
         failed.append("image_tag_latest")
 
-    if not body.get("champion"): failed.append("champion")\n    if not body.get("eval_passed"): failed.append("eval")\n    if not body.get("digest"): failed.append("digest")
+    if not body.get("champion"): failed.append("champion")
+    if not body.get("eval_passed"): failed.append("eval")
+    if not body.get("digest"): failed.append("digest")
     return {"passed": not failed, "failed": failed, "applied": False}
