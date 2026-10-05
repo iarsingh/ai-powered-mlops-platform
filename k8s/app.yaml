@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-powered-mlops-platform
+  labels:
+    app: ai-powered-mlops-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-powered-mlops-platform
+  template:
+    metadata:
+      labels:
+        app: ai-powered-mlops-platform
+    spec:
+      containers:
+        - name: api
+          image: ai-powered-mlops-platform:local
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /v1/readyz
+              port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-powered-mlops-platform
+spec:
+  selector:
+    app: ai-powered-mlops-platform
+  ports:
+    - port: 80
+      targetPort: 8080
