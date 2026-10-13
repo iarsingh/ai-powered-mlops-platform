@@ -1,5 +1,12 @@
 # AI-Powered MLOps Platform
 
+## Overview
+
+A promotion gate for ML models. The `POST /check` endpoint passes a release only when there is a named champion model, its evaluation has passed and the serving image is pinned by digest; missing any one of the three fails the check. A versioned `/v1` ops API adds workspaces, tenant isolation, job approval and audit records.
+
+- **Built with:** Python, pytest, Docker, GitHub Actions
+- **Scope:** Local lab with tests; it does not call a hosted model and refuses production apply.
+
 <!-- project-guide:start -->
 ## Project guide
 
